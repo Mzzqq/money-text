@@ -1,5 +1,7 @@
 package money_text
 
+import "strings"
+
 var units = []string{"", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan"}
 var teens = []string{"sepuluh", "sebelas", "dua belas", "tiga belas", "empat belas", "lima belas", "enam belas", "tujuh belas", "delapan belas", "sembilan belas"}
 var tens = []string{"", "sepuluh", "dua puluh", "tiga puluh", "empat puluh", "lima puluh", "enam puluh", "tujuh puluh", "delapan puluh", "sembilan puluh"}
@@ -28,4 +30,26 @@ func konversiRatusan(n int) string {
 		str += units[n]
 	}
 	return str
+}
+
+func KonversiKeTeks(jumlah float64) string {
+	bagianBulat := int(jumlah)
+	bagianPecahan := int((jumlah - float64(bagianBulat)) * 100)
+
+	bagianBulatStr := konversiRatusan(bagianBulat)
+	bagianPecahanStr := konversiRatusan(bagianPecahan)
+
+	hasil := bagianBulatStr + " rupiah"
+	if bagianBulat != 1 {
+		hasil += "s"
+	}
+
+	if bagianPecahan > 0 {
+		hasil += " dan " + bagianPecahanStr + " sen"
+		if bagianPecahan != 1 {
+			hasil += "s"
+		}
+	}
+
+	return strings.TrimSpace(hasil)
 }
