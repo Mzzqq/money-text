@@ -40,15 +40,9 @@ func KonversiKeTeks(jumlah float64) string {
 	bagianPecahanStr := konversiRatusan(bagianPecahan)
 
 	hasil := bagianBulatStr + " rupiah"
-	if bagianBulat != 1 {
-		hasil += "s"
-	}
 
 	if bagianPecahan > 0 {
 		hasil += " dan " + bagianPecahanStr + " perak"
-		if bagianPecahan != 1 {
-			hasil += "s"
-		}
 	}
 
 	return strings.TrimSpace(hasil)
