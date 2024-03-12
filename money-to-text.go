@@ -45,7 +45,7 @@ func KonversiKeTeks(jumlah float64) string {
 	}
 
 	if bagianPecahan > 0 {
-		hasil += " dan " + bagianPecahanStr + " sen"
+		hasil += " dan " + bagianPecahanStr + " perak"
 		if bagianPecahan != 1 {
 			hasil += "s"
 		}
